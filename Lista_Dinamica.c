@@ -20,36 +20,42 @@ void inserir_inicio(Lista *lista, int num){
     No *novo = (No*)malloc(sizeof(No));/*Alocação dinâmica da memória para o tipo ponteiro, informo a máquina através de 
 de um cast(No*) que ela vai ter que reservar um espaço na memória para um ponteiro do tipo Nó. Feito isso, ele vai guardar
 essa iformação e vou poder alterar o que está lá dentro futuramente, sem que eu perca os dados já passado*/
-    novo->dado = num;
-    novo->proximo = lista->inicio;//o novo elemento passa a ser o início da lista
-    lista->inicio = novo;
-    lista->tam++;
+    if(novo){
+        novo->dado = num;
+        novo->proximo = lista->inicio;//o novo elemento vai ser o início da lista
+        lista->inicio = novo;
+        lista->tam++;
+    }else{
+        printf("\nErro ao alocar a memória...\n");
+    }    
 }
 //procedimento para inserir no fim da Lista
 void inserir_fim(Lista *lista, int num){
     No *no, *novo = (No*)malloc(sizeof(No));
-    novo->dado = num;
-    novo->proximo = NULL;
-    
-    if(lista->inicio == NULL){
-        lista->inicio = novo;
+    if(novo){
+        novo->dado = num;
+        novo->proximo = NULL;
+        if(lista->inicio == NULL){
+            lista->inicio = novo;
+        }else{
+            no = lista->inicio;
+            while(no->proximo)
+                no = no->proximo;
+            lista->tam++;//independentemente de onde for feita essa inserção, eu tenho sempre que incrementar a minha lista
+        }
     }else{
-        no = lista->inicio;
-        while(no->proximo != NULL)
-            no = no->proximo;
-        no->proximo = novo;
+        printf("\nErro ao alocar a memória...\n");
     }
-    lista->tam++;//independentemente de onde for feita essa inserção, eu tenho sempre que incrementar a minha lista
 }
 //procedimento para imprimir a Lista
-void imprimir_lista(Lista *lista){
-    No *inicio = lista->inicio;
-    printf("\nTamanho da lista: %d\n", lista->tam);
-    while(inicio != NULL){/*mesmo com a presença do campo "int tam" usarei NULL como se não soubesse o tamanho da Lista
+void imprimir_lista(Lista lista){
+    No *no = lista.inicio;
+    printf("\nTamanho da lista: %d\n", lista.tam);
+    while(no){/*mesmo com a presença do campo "int tam" usarei NULL como se não soubesse o tamanho da Lista
 pois é algo que será usado na grande maioria dos casos, trabalhar com listas dinâmicas sem saber o tamanho delas*/
-        printf("%d ", inicio->dado);/*Se a lista for vazia o inicio vai ser nulo e não será feito nada, se a lista estiver vazia
+        printf("%d ", no->dado);/*Se a lista for vazia o inicio vai ser nulo e não será feito nada, se a lista estiver vazia
 ficará no inicio com uma região de memória com o endereço reservado, então será mandado o valor para o campo inicio->dado*/ 
-        inicio = inicio->proximo;//para que não fica em laço infinito é perciso inidicar para o proximo nó da lista
+        no = no->proximo;//para que não fica em laço infinito é perciso inidicar para o proximo nó da lista
     }
     printf("\n\n");
 }
@@ -76,7 +82,7 @@ int main(){
             inserir_fim(&lista, valor);
             break;
         case 3:
-            imprimir_lista(&lista);
+            imprimir_lista(lista);
             break;
         case 4:
             printf("\nPrograma finalizado!!\n");
