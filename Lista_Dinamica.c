@@ -85,5 +85,5 @@ int main(){
             printf("\nOpção inválida!!\n");
        }
    }while(op != 3);
-   return main();
+   return 0;
 }
