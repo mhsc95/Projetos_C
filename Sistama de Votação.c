@@ -14,24 +14,14 @@ int main (){
     int op;
     
     do{
-        printf("\nEscolha as seguintes op√ß√µes abaixo:\n");
-        printf("\n1 - Votar para vereador\n2 - Votar para prefeito\n3 - Apura√ß√£o dos votos\n4 - Sair\n");
+        printf("\nEscolha as seguintes opÁıes abaixo:\n");
+        printf("\n1 - Votar para vereador\n2 - Votar para prefeito\n3 - ApuraÁ„o dos votos\n4 - Sair\n");
         scanf("%d", &op);
         switch(op){
             case 1:
                 votacao_vereador();
-            break;
-            case 2:
-            
-            break;
-            case 3:
-                votos_total();
-            break;    
-            case 4:
-                printf("\nPrograma encerrado...\n");
-            break;
             default:
-                printf("\nOp√ß√£o inv√°lida!!\n");
+                printf("\nOpÁ„o inv·lida!!\n");
             break;
         }
     }while(op != 0);
@@ -50,8 +40,7 @@ int votacao_vereador(){
                 return main();
             }else{
                 if(vResultado == 2)
-                    printf("\nVoto cancelado!\n");
-                    vJoao--;
+                    printf("\nVoto cancelado!\n");                    
                     return main();
             }
         }else{
@@ -64,8 +53,7 @@ int votacao_vereador(){
                     return main();
                 }else{
                     if(vResultado == 2)
-                        printf("\nVoto cancelado!\n");
-                        vMaria--;
+                        printf("\nVoto cancelado!\n");                        
                         return main();
                 }
             }else{
@@ -78,8 +66,7 @@ int votacao_vereador(){
                         return main();
                     }else{
                         if(vResultado == 2)
-                            printf("\nVoto cancelado!\n");
-                            vZe--;
+                            printf("\nVoto cancelado!\n");                            
                             return main();
                 }
             }else{
@@ -92,8 +79,7 @@ int votacao_vereador(){
                         return main();
                     }else{
                         if(vResultado == 2)
-                            printf("\nVoto cancelado!!\n");
-                            vNulo--;
+                            printf("\nVoto cancelado!!\n");                            
                             return main();
                     }
                 }
@@ -112,7 +98,7 @@ void menu(){
 }
 
 void votos_total(){
-    printf("\nQuantidade de votos para o vereador Jo√£o do Frete: %d\n", vJoao);
+    printf("\nQuantidade de votos para o vereador Jo„o do Frete: %d\n", vJoao);
     printf("\nQuantidade de votos para a vereadora Maria da Pamonha: %d\n", vMaria);
     printf("\nQuantidade de votos para o vereador Ze da Farmacia: %d\n", vZe);
     printf("\nQuantidade de votos Nulos para vereador: %d\n", vNulo);
