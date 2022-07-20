@@ -26,6 +26,8 @@ int main () {
 		printf("\nEscolha as seguintes opcoes abaixo:\n");
 		printf("\n1 - Votar para vereador\n2 - Votar para prefeito\n3 - Apuracao dos votos\n4 - Sair\n");
 		scanf("%d", &op);
+        fflush(stdin);
+        system("cls");
 		switch(op) {
 			case 1:
 				votacao_vereador();
