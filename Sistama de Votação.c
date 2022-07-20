@@ -47,6 +47,7 @@ int main () {
 				break;
 			case 4:
 				printf("\nPrograma finalizado!!\n");
+                return 0;
 				break;
 			default:
 				printf("\nOpcao invalida!!\n");
